@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>My Template</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="/Bootstrap/css/bootstrap.css">
+    </head>
+    <body>
+       
+        <canvas id="canvas"></canvas>
+        <script src="index.js"></script>
+        <script>
+            //var engine = new Engine({"args":[],"canvasResizePolicy":2,"emscriptenPoolSize":8,"ensureCrossOriginIsolationHeaders":true,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":176328,"index.wasm":36145869},"focusCanvas":true,"gdextensionLibs":[],"godotPoolSize":4});
+            //engine.startGame();
+
+
+            const myWasm = 'index';
+            const myPck = 'index.pck';
+            const engine = new Engine();
+            Promise.all([
+                // Load and init the engine
+                engine.init(myWasm),
+                // And the pck concurrently
+                engine.preloadFile(myPck),
+            ]).then(() => {
+                // Now start the engine.
+                return engine.start({ args: ['--main-pack', myPck] });
+            }).then(() => {
+                console.log('Engine has started!');
+            });
+        </script>
+       
+        <div id="console_overhead_wrap" >
+            <div id="console_overhead">
+                <div>
+                    <p data-id="1" data-next-id="0" data-prev-id="0">Exit</p>
+                </div>
+            </div>
+        </div>
+        <div id="fade_id" >
+
+        </div>
+        <style>
+            .fade_overhead {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 10000px;
+                height: 10000px;
+                background-color: black;
+                opacity: .5;
+                z-index: 499;
+            }
+            #console_overhead_wrap {
+                z-index: 500;
+                position: absolute;
+                top: 20px;
+                left:0;
+                display: flex;
+                justify-content: center;
+                height: 100px;
+                width: 100%;
+            }
+            #console_overhead  {
+                width: 10%;
+                height: 100%;
+                background-color: red;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-radius: 25px;
+            }
+
+            #console_overhead div {
+                width: 100px;
+                height: 80px;
+                border-radius: 100px;
+                background-color: blue;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            #console_overhead div p {
+                color: white;
+                font-size: 20px;
+                padding: 0;
+                margin: 0;
+                text-align: center;
+            }
+            
+            #console_overhead:focus {
+                background-color: blue;
+            }
+        </style>
+         <script src="http://localhost:9999/getoverhead/"></script>
+         <script src="/Bootstrap/js/bootstrap.js"></script>
+           <script src="http://localhost:9999/getgamepad/"></script>
+    </body>
+</html>
+
+
+
+

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://b20scgrc5igxk"]
+
+[ext_resource type="Script" uid="uid://dvvnmv8o4xt73" path="res://scripts/meteor.gd" id="1_pxso2"]
+[ext_resource type="Texture2D" uid="uid://dfc1u21100bi2" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorBrown_big1.png" id="1_tcwo0"]
+[ext_resource type="Texture2D" uid="uid://vxleebuca6lo" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorBrown_big2.png" id="3_stakr"]
+[ext_resource type="Texture2D" uid="uid://b8534nul46e8i" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorBrown_big3.png" id="4_88cbt"]
+[ext_resource type="Texture2D" uid="uid://dff2y3ftyee2m" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorGrey_big1.png" id="5_wsx3o"]
+[ext_resource type="Texture2D" uid="uid://byp1nr5rab744" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorGrey_big2.png" id="6_wgl6k"]
+[ext_resource type="Texture2D" uid="uid://dud4s7vmbbb1h" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorGrey_big3.png" id="7_ux51p"]
+[ext_resource type="Texture2D" uid="uid://c0c4eba7gvxv" path="res://kenney_space-shooter-redux/PNG/Meteors/meteorGrey_big4.png" id="8_qov7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pxso2"]
+size = Vector2(100, 80)
+
+[node name="Meteor" type="RigidBody2D" unique_id=193672116 node_paths=PackedStringArray("collision_shape")]
+scale = Vector2(3.617543, 3.617543)
+collision_layer = 2
+collision_mask = 2
+mass = 0.001
+gravity_scale = 0.0
+script = ExtResource("1_pxso2")
+collision_shape = NodePath("CollisionShape2D")
+textures = Array[Texture2D]([ExtResource("1_tcwo0"), ExtResource("3_stakr"), ExtResource("4_88cbt"), ExtResource("5_wsx3o"), ExtResource("6_wgl6k"), ExtResource("7_ux51p"), ExtResource("8_qov7x")])
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=671688367]
+texture = ExtResource("1_tcwo0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=693086541]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_pxso2")
